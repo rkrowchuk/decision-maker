@@ -24,5 +24,10 @@ module.exports = (db) => {
     res.render("results");
   });
 
+  router.get("/success", (req, res) => {
+    res.locals.title = "success";
+    res.render("success");
+  });
+
   return router;
 };
