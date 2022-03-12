@@ -1,7 +1,10 @@
 <% include partials/_head_tag.ejs %>
 
 <body>
+  <header>
   <h1>Create your poll</h1>
+  </header>
+  <section>
   <form action="/api/polls/" method="post" class="create-poll">
     <div class="question-field">
       <input type="text" name="question" id="question" required minlength="1" maxlength="255" placeholder="Enter your question here">
@@ -31,6 +34,7 @@
       <input type="submit" value="Create your poll!">
     </div>
   </form>
+</section>
 
 
 </body>
