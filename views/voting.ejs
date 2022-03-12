@@ -1,5 +1,38 @@
 <% include partials/_head_tag.ejs %>
 
-<h1>This is where you vote</h1>
+<body>
+  <header>
+    <h1>Rank these options!</h1>
+  </header>
+  <h2>Insert Question Here</h2>
+
+  <form action="/api/polls/:id" method="post" class="vote-submission">
+      <div class="option">
+        <h3>Insert option</h3>
+        <p>description here</p>
+      </div>
+      <div class="option">
+        <h3>Insert option</h3>
+        <p>description here</p>
+      </div>
+      <div class="option">
+        <h3>Insert option</h3>
+        <p>description here</p>
+      </div>
+      <div class="option">
+        <h3>Insert option</h3>
+        <p>description here</p>
+      </div>
+
+      <div>
+        <input type="text" placeholder="Name" name="voter_name">
+      </div>
+
+      <div class="poll-submit">
+        <input type="submit" value="Submit your Rankings!">
+      </div>
+    </form>
+
+</body>
 
 </html>
