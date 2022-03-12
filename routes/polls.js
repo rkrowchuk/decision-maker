@@ -18,5 +18,11 @@ module.exports = (db) => {
     res.locals.title = "voting";
     res.render("voting");
   });
+
+  router.get("/results", (req, res) => {
+    res.locals.title = "results";
+    res.render("results");
+  });
+
   return router;
 };
