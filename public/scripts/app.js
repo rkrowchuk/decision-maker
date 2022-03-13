@@ -2,7 +2,11 @@
 $(document).ready(() => {
 
   $(function() {
-    $("#sortable").sortable();
+    $("#sortable").sortable({
+      containment: "body",
+      cursor: "move"
+    });
   });
+
 
 });

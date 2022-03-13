@@ -3,6 +3,8 @@
 // }
 
 body {
+  overflow-x: hidden;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +100,8 @@ div.option {
 }
 
 div.option:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.664);
+  box-shadow: 0 0 14px rgba(33, 33, 33, 0.664);
+  transform: scale(1.05);
 }
 
 div .option-info {
