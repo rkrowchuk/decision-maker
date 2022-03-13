@@ -35,18 +35,63 @@ form > * {
   flex-basis: 100%;
 }
 
-div.question-field {
-  margin: 10px;
+.page-title {
+  font-family: 'Barriecito', cursive;
 }
 
+
+// index.ejs
 input#question {
   width: 100%;
 }
 
-input.answer-field {
+input.answer-input {
+  width: 100%;
+ }
+
+input.description-input {
+  width: 100%;
+}
+
+#email-input {
   width: 100%;
 }
 
 div.poll-submit {
   justify-content: center;
 }
+
+
+//results.ejs
+div.results {
+  flex-direction: column;
+  align-items: center;
+}
+
+p#result-1 {
+  font-size: 24px;
+  color: navy;
+}
+
+
+//voting.ejs
+input.voter-input {
+  width: 100%;
+}
+
+div.option {
+  flex-direction: column;
+  align-items: center;
+}
+
+
+//success.ejs
+.success-msg {
+  flex-direction: column;
+}
+section.links {
+  display: flex;
+}
+
+
+

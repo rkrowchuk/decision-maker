@@ -1,12 +1,13 @@
 <% include partials/_head_tag.ejs %>
 <body>
   <% include('partials/_navbar') %>
-<header>
-  <p class="success-msg">Thanks for creating your poll. Send to your friends to gather your results!</p>
+<header class="success-msg">
+  <p>Thanks for creating your poll.</p>
+  <p>Send to your friends to gather your results!</p>
 </header>
 <section>
-  <a href=#>View your results</a>
-  <a href=#>Share with your friends</a>
+  <a id="results-link" href=#>View your results</a>
+  <a id="vote-link" href=#>Share with your friends</a>
 </section>
 </body>
 </html>
