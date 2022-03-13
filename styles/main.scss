@@ -73,3 +73,13 @@ p#result-1 {
   color: navy;
 }
 
+
+//voting.ejs
+input.voter-input {
+  width: 100%;
+}
+
+div.option {
+  flex-direction: column;
+  align-items: center;
+}
