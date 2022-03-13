@@ -1,7 +1,5 @@
 INSERT INTO polls (
   creator_email,
-  result_url,
-  submission_url,
   question,
   answer_1,
   description_1,
@@ -14,8 +12,6 @@ INSERT INTO polls (
   name_required
 ) VALUES (
   'fakeemail@gmail.com',
-  '/eiruoewiru',
-  '/jbdivbdsiu',
   'What is your favourite colour?',
   'red',
   'dfhdsfnsdovindsaovnosadivnsdva',
@@ -28,8 +24,6 @@ INSERT INTO polls (
   'true'
 ), (
   'anotherfakeemail@gmail.com',
-  '/dsakjdhsakjd',
-  '/fhdsufhsdkjf',
   'What is your favourite meal?',
   'Tacos',
   'delicious',

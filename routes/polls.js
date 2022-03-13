@@ -19,7 +19,7 @@ module.exports = (db) => {
     res.locals.title = "voting";
     const poll_id = req.params.id;
 
-    db.query('SELECT * FROM polls WHERE id = $1;', [poll_id])
+    db.query("SELECT * FROM polls WHERE id = $1;", [poll_id])
       .then((data) => {
         const poll = data.rows[0];
         const templateVars = { poll };
@@ -43,12 +43,33 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const pollInput = req.body;
     console.log(pollInput);
-    res.redirect("success");
-  })
+    const queryParams = [
+      pollInput.question,
+      pollInput.answer1,
+      pollInput.description_1,
+      pollInput.answer2,
+      pollInput.description_2,
+      pollInput.answer3,
+      pollInput.description_3,
+      pollInput.answer4,
+      pollInput.description_4,
+      pollInput.email,
+    ];
+    db.query(
+      `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      queryParams
+    )
+      .then((result) => {
+        res.redirect("success");
+      })
+      .catch((err) => {
+        console.log("error:", err);
+      });
+  });
 
   router.post("/:id", (req, res) => {
     res.redirect("/");
-  })
+  });
 
   return router;
 };

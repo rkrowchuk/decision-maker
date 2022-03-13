@@ -3,8 +3,6 @@ DROP TABLE IF EXISTS polls CASCADE;
 CREATE TABLE polls (
   id SERIAL PRIMARY KEY NOT NULL,
   creator_email VARCHAR(255) NOT NULL,
-  result_url VARCHAR(255) NOT NULL UNIQUE,
-  submission_url VARCHAR(255) NOT NULL UNIQUE,
   question VARCHAR(255) NOT NULL,
   answer_1 VARCHAR(255) NOT NULL,
   description_1 TEXT,
