@@ -2,9 +2,7 @@
 
 <body>
   <%- include('partials/_navbar') %>
-  <header>
   <h1 class="page-title">Create your poll</h1>
-  </header>
   <section>
   <form action="/api/polls/" method="post" class="create-poll">
     <div class="question-field">
@@ -43,9 +41,7 @@
       <label for="include-name">Do you want to require a name from voters?</label>
     </div>
 
-    <div class="poll-submit">
-      <input type="submit" value="Create your poll!">
-    </div>
+    <button class="poll-submit"type="submit">Create!</button>
   </form>
 </section>
 
