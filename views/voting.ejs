@@ -7,22 +7,37 @@
   </header>
   <h2><%= poll.question %></h2>
 
-  <form action="/api/polls/:id" method="post" class="vote-submission">
+  <form action="/api/polls/:id" method="post" class="vote_submission">
       <div class="option" draggable="true">
-        <h3><%= poll.answer_1 %></h3>
-        <p><%= poll.description_1 %></p>
+        <div class="option-info">
+          <h3><%= poll.answer_1 %></h3>
+          <p><%= poll.description_1 %></p>
+        </div>
+        <span class="order">1</span>
       </div>
-      <div class="option">
-        <h3><%= poll.answer_2 %></h3>
-        <p><%= poll.description_2 %></p>
+
+      <div class="option" draggable="true">
+        <div class="option-info">
+          <h3><%= poll.answer_2 %></h3>
+          <p><%= poll.description_2 %></p>
+        </div>
+        <span class="order">2</span>
       </div>
-      <div class="option">
-        <h3><%= poll.answer_3 %></h3>
-        <p><%= poll.description_3 %></p>
+
+      <div class="option" draggable="true">
+        <div class="option-info">
+          <h3><%= poll.answer_3 %></h3>
+          <p><%= poll.description_3 %></p>
+        </div>
+        <span class="order">3</span>
       </div>
-      <div class="option">
-        <h3><%= poll.answer_4 %></h3>
-        <p><%= poll.description_4 %></p>
+
+      <div class="option" draggable="true">
+        <div class="option-info">
+          <h3><%= poll.answer_4 %></h3>
+          <p><%= poll.description_4 %></p>
+        </div>
+        <span class="order">4</span>
       </div>
 
       <div class="voter_name">
