@@ -19,7 +19,8 @@ module.exports = (db) => {
     res.locals.title = "voting";
     const poll_id = req.params.id;
 
-    db.query("SELECT * FROM polls WHERE id = $1;", [poll_id])
+    return db
+      .query("SELECT * FROM polls WHERE id = $1;", [poll_id])
       .then((data) => {
         const poll = data.rows[0];
         const templateVars = { poll };
@@ -36,13 +37,12 @@ module.exports = (db) => {
   });
 
   router.get("/success", (req, res) => {
-    res.locals.title = "success";
+    res.locals.title = "success123";
     res.render("success");
   });
 
   router.post("/", (req, res) => {
     const pollInput = req.body;
-    console.log(pollInput);
     const queryParams = [
       pollInput.question,
       pollInput.answer1,
@@ -55,12 +55,13 @@ module.exports = (db) => {
       pollInput.description_4,
       pollInput.email,
     ];
-    db.query(
-      `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
-      queryParams
-    )
+    return db
+      .query(
+        `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+        queryParams
+      )
       .then((result) => {
-        res.redirect("success");
+        res.redirect("/api/polls/success");
       })
       .catch((err) => {
         console.log("error:", err);
