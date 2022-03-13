@@ -15,19 +15,19 @@ module.exports = (db) => {
     res.render("index");
   });
 
-  router.get("/:id", (req, res) => {
+  router.get("/vote/:id", (req, res) => {
     res.locals.title = "voting";
     const poll_id = req.params.id;
 
     return db
-      .query("SELECT * FROM polls WHERE id = $1;", [poll_id])
+      .query("SELECT * FROM polls WHERE id = $1;", [`${poll_id}`])
       .then((data) => {
         const poll = data.rows[0];
         const templateVars = { poll };
-        res.render("voting", templateVars);
+        return res.render("voting", templateVars);
       })
       .catch((err) => {
-        console.log(err);
+        return console.log(err);
       });
   });
 
@@ -37,23 +37,23 @@ module.exports = (db) => {
   });
 
   router.get("/success", (req, res) => {
-    res.locals.title = "success123";
+    res.locals.title = "success";
     res.render("success");
   });
 
   router.post("/", (req, res) => {
     const pollInput = req.body;
     const queryParams = [
-      pollInput.question,
-      pollInput.answer1,
-      pollInput.description_1,
-      pollInput.answer2,
-      pollInput.description_2,
-      pollInput.answer3,
-      pollInput.description_3,
-      pollInput.answer4,
-      pollInput.description_4,
-      pollInput.email,
+      `${pollInput.question}`,
+      `${pollInput.answer1}`,
+      `${pollInput.description_1}`,
+      `${pollInput.answer2}`,
+      `${pollInput.description_2}`,
+      `${pollInput.answer3}`,
+      `${pollInput.description_3}`,
+      `${pollInput.answer4}`,
+      `${pollInput.description_4}`,
+      `${pollInput.email}`,
     ];
     return db
       .query(
@@ -61,10 +61,10 @@ module.exports = (db) => {
         queryParams
       )
       .then((result) => {
-        res.redirect("/api/polls/success");
+        return res.redirect("/api/polls/success");
       })
       .catch((err) => {
-        console.log("error:", err);
+         return console.log("error:", err);
       });
   });
 
