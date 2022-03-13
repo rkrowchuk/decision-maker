@@ -4,28 +4,32 @@
   <header>
     <h1>Rank these options!</h1>
   </header>
-  <h2>Insert Question Here</h2>
+  <h2><%= poll.question %></h2>
 
   <form action="/api/polls/:id" method="post" class="vote-submission">
-      <div class="option">
-        <h3>Insert option</h3>
-        <p>description here</p>
+      <div class="option" draggable="true">
+        <h3><%= poll.answer_1 %></h3>
+        <p><%= poll.description_1 %></p>
       </div>
       <div class="option">
-        <h3>Insert option</h3>
-        <p>description here</p>
+        <h3><%= poll.answer_2 %></h3>
+        <p><%= poll.description_2 %></p>
       </div>
       <div class="option">
-        <h3>Insert option</h3>
-        <p>description here</p>
+        <h3><%= poll.answer_3 %></h3>
+        <p><%= poll.description_3 %></p>
       </div>
       <div class="option">
-        <h3>Insert option</h3>
-        <p>description here</p>
+        <h3><%= poll.answer_4 %></h3>
+        <p><%= poll.description_4 %></p>
       </div>
 
       <div class="voter_name">
-        <input type="text" placeholder="Name" name="voter_name">
+        <% if(poll.name_required) { %>
+          <input type="text" placeholder="Name (required)" name="voter_name" required>
+        <% } else { %>
+          <input type="text" placeholder="Name (optional)" name="voter_name">
+        <% } %>
       </div>
 
       <div class="poll-submit">

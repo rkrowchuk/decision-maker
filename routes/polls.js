@@ -20,10 +20,10 @@ module.exports = (db) => {
     const poll_id = req.params.id;
 
     db.query('SELECT * FROM polls WHERE id = $1;', [poll_id])
-      .then((res) => {
-        const poll = res.rows[0];
+      .then((data) => {
+        const poll = data.rows[0];
         const templateVars = { poll };
-        return res.render("voting", templateVars);
+        res.render("voting", templateVars);
       })
       .catch((err) => {
         console.log(err);
