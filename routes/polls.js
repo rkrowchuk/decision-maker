@@ -5,6 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+const { Template } = require("ejs");
 const express = require("express");
 const router = express.Router();
 
@@ -14,9 +15,19 @@ module.exports = (db) => {
     res.render("index");
   });
 
-  router.get("/id", (req, res) => {
+  router.get("/:id", (req, res) => {
     res.locals.title = "voting";
-    res.render("voting");
+    const poll_id = req.params.id;
+
+    db.query('SELECT * FROM polls WHERE id = $1;', [poll_id])
+      .then((data) => {
+        const poll = data.rows[0];
+        const templateVars = { poll };
+        res.render("voting", templateVars);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   router.get("/results", (req, res) => {
