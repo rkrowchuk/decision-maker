@@ -40,5 +40,15 @@ module.exports = (db) => {
     res.render("success");
   });
 
+  router.post("/", (req, res) => {
+    const pollInput = req.body;
+    console.log(pollInput);
+    res.redirect("success");
+  })
+
+  router.post("/polls/:id", (req, res) => {
+    res.redirect("/");
+  })
+
   return router;
 };
