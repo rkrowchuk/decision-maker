@@ -1,14 +1,25 @@
 <% include partials/_head_tag.ejs %>
 <body>
-  <% include('partials/_navbar') %>
+  <%- include('partials/_navbar') %>
   <h2 class="page-title">The results:</h2>
-  <p class="poll-question">Poll Question</p>
+  <p class="poll-question"><%= scores.question %></p>
   <div class="results">
-    <p id="result-1">Winner!!</p>
-    <p id="result-2">Second</p>
-    <p id="result-3">Third</p>
-    <p id="result-4">Fourth</p>
+    <div id ="result-1">
+      <p><%= scores.answer_1 %></p>
+      <p><%= scores.a1_score %></p>
+    </div>
+    <div id="result-2">
+      <p><%= scores.answer_2 %></p>
+      <p><%= scores.a2_score %></p>
+    </div>
+    <div id="result-3">
+      <p><%= scores.answer_3 %></p>
+      <p><%= scores.a3_score %></p>
+    </div>
+    <div id="result-4">
+      <p><%= scores.answer_4 %></p>
+      <p><%= scores.a4_score %></p>
+    </div>
   </div>
-  <button type="button">Create Your Own Poll!</button>
 </body>
 </html>

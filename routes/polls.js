@@ -31,9 +31,25 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/results", (req, res) => {
+  router.get("/results/:id", (req, res) => {
     res.locals.title = "results";
-    res.render("results");
+    const poll_id = req.params.id;
+
+    return db
+    .query(`SELECT polls.question, polls.answer_1, submissions.a1_score, polls.answer_2,submissions.a2_score, polls.answer_3, submissions.a3_score, polls.answer_4, submissions.a4_score
+    FROM polls
+    JOIN submissions ON polls.id = submissions.poll_id
+    WHERE polls.id = $1;`, [`${poll_id}`])
+    .then((data) => {
+      const scores = data.rows[0];
+      console.log(data.rows[0]);
+      const templateVars = { scores };
+      return res.render("results", templateVars);
+    })
+    .catch((err) => {
+      return console.log(err);
+    });
+
   });
 
   router.get("/success", (req, res) => {
