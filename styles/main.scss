@@ -43,9 +43,18 @@ input#question {
   width: 100%;
 }
 
-input.answer-field {
+input.answer-input {
   width: 100%;
 }
+
+input.description-input {
+  width: 100%;
+}
+
+#email-input {
+  width: 100%;
+}
+
 
 div.poll-submit {
   justify-content: center;
