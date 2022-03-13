@@ -46,7 +46,7 @@ module.exports = (db) => {
     res.redirect("success");
   })
 
-  router.post("/polls/:id", (req, res) => {
+  router.post("/:id", (req, res) => {
     res.redirect("/");
   })
 
