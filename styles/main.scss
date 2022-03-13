@@ -1,9 +1,10 @@
-* {
-  border: 1px solid black;
-}
+// * {
+//   border: 1px solid black;
+// }
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -18,4 +19,33 @@ body {
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+}
+
+div {
+  display: flex;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  flex-basis: 100%;
+}
+
+div.question-field {
+  margin: 10px;
+}
+
+input#question {
+  width: 100%;
+}
+
+input.answer-field {
+  width: 100%;
+}
+
+div.poll-submit {
+  justify-content: center;
 }
