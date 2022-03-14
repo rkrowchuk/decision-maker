@@ -152,6 +152,11 @@ div.option {
 div.option:hover {
   box-shadow: 0 0 14px rgba(33, 33, 33, 0.664);
   transform: scale(1.05);
+  cursor: grab;
+}
+
+div.option:active {
+  cursor: grabbing;
 }
 
 div .option-info {
