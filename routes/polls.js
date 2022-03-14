@@ -36,9 +36,9 @@ module.exports = (db) => {
     const poll_id = req.params.id;
 
     return db
-    .query(`SELECT polls.question, polls.answer_1, submissions.a1_score, polls.answer_2,submissions.a2_score, polls.answer_3, submissions.a3_score, polls.answer_4, submissions.a4_score
+    .query(`SELECT polls.question, polls.answer_1, SUM(submissions.a1_score), polls.answer_2, SUM(submissions.a2_score), polls.answer_3, SUM(submissions.a3_score), polls.answer_4, SUM(submissions.a4_score)
     FROM polls
-    JOIN submissions ON polls.id = submissions.poll_id
+    JOIN submissions ON polls.id = poll_id
     WHERE polls.id = $1;`, [`${poll_id}`])
     .then((data) => {
       const scores = data.rows[0];
