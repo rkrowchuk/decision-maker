@@ -5,7 +5,8 @@ $(document).ready(() => {
   $(function() {
     $("#sortable").sortable({
       containment: "body",
-      revert: 100,
+      revert: true,
+      opacity: 0.7,
 
       /* Upon the dropping of the grabbed option.
       This logic updates the visable rankings and input score values of the options. */
