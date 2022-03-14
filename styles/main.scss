@@ -6,6 +6,8 @@ $accent-color: #54d987;
 
 body {
   font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,17 +125,40 @@ p#result-1 {
   color: navy;
 }
 
-
 //voting.ejs
 input.voter-input {
   width: 100%;
 }
 
-div.option {
+.vote_submission {
+  display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
+div.option {
+  width: 450px;
+  margin: 1em;
+  padding-left: 1.3em;
+  padding-right: 1.5em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(227, 255, 255);
+  border-radius: 2%;
+  gap: 3em;
+  transition: box-shadow .3s;
+}
+
+div.option:hover {
+  box-shadow: 0 0 14px rgba(33, 33, 33, 0.664);
+  transform: scale(1.05);
+}
+
+div .option-info {
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
 //success.ejs
 .success-msg {
