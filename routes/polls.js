@@ -8,12 +8,9 @@
 const { Template } = require("ejs");
 const express = require("express");
 const router = express.Router();
+const querystring = require('querystring');
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    res.locals.title = "new route";
-    res.render("index");
-  });
 
   router.get("/vote/:id", (req, res) => {
     res.locals.title = "voting";
@@ -102,7 +99,11 @@ module.exports = (db) => {
 
     return db.query(queryString, queryParams)
       .then(() => {
-        return res.redirect("/");
+        const query = querystring.stringify({
+          "voted": true,
+          "voter_name": voteInput.voter_name,
+        });
+        res.redirect('/?' + query);
       })
       .catch((err) => {
         return console.log(err);

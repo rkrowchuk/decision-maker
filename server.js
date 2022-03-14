@@ -49,7 +49,11 @@ app.use("/api/polls", pollsRoutes(db));
 
 app.get("/", (req, res) => {
   res.locals.title = "Decision Maker";
-  res.render("index");
+  const templateVars = {
+    voted: req.query.voted,
+    voter_name: req.query.voter_name
+  };
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {

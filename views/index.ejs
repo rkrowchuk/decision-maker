@@ -2,6 +2,18 @@
 
 <body>
   <%- include('partials/_navbar') %>
+
+  <% if (voted) { %>
+    <div class="vote_success_msg">
+      <% if (voter_name) {%>
+        <h2>Thanks for voting <%= voter_name %>!</h2>
+      <% } else { %>
+        <h2>Thanks for voting!</h2>
+      <% } %>
+    </div>
+  <% } %>
+
+
   <h1 class="page-title">Create your poll</h1>
   <section>
   <form action="/api/polls/" method="post" class="create-poll">
