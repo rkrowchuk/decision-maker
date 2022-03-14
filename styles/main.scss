@@ -4,6 +4,7 @@
 $font-color: #edf5e1;
 $accent-color: #54d987;
 
+
 body {
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
@@ -65,16 +66,31 @@ nav {
 
 .create-poll-btn {
   background: none;
+  text-decoration: none;
   border: none;
   color: $font-color;
   padding:10px;
   height: 50px;
   font-weight: 700;
   font-size: 20px;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+.create-poll-btn:hover {
+  color: $accent-color;
+  animation: pulse 1s infinite ease-in-out alternate;
 }
 
 // index.ejs
 
+.hidden {
+  display: none;
+}
 
 input#question {
   width: 100%;
