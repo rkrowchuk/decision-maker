@@ -165,6 +165,11 @@ div .option-info {
   align-items: flex-start;
 }
 
+.vote_success_msg {
+  color: $font-color;
+  border: #54d987;
+}
+
 //success.ejs
 .success-msg {
   flex-direction: column;

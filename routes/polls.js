@@ -8,12 +8,9 @@
 const { Template } = require("ejs");
 const express = require("express");
 const router = express.Router();
+const querystring = require('querystring');
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    res.locals.title = "new route";
-    res.render("index");
-  });
 
   router.get("/vote/:id", (req, res) => {
     res.locals.title = "voting";
@@ -105,7 +102,32 @@ module.exports = (db) => {
   });
 
   router.post("/:id", (req, res) => {
-    res.redirect("/");
+    const voteInput = req.body;
+    const queryParams = [
+      `${voteInput.poll_id}`,
+      `${voteInput.voter_name}`,
+      `${voteInput.option_1}`,
+      `${voteInput.option_2}`,
+      `${voteInput.option_3}`,
+      `${voteInput.option_4}`,
+    ];
+    const queryString = `INSERT INTO submissions (
+      poll_id, voter_name, a1_score, a2_score, a3_score, a4_score
+    ) VALUES (
+      $1, $2, $3, $4, $5, $6
+    );`
+
+    return db.query(queryString, queryParams)
+      .then(() => {
+        const query = querystring.stringify({
+          "voted": true,
+          "voter_name": voteInput.voter_name,
+        });
+        res.redirect('/?' + query);
+      })
+      .catch((err) => {
+        return console.log(err);
+      })
   });
 
   return router;
