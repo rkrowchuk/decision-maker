@@ -4,10 +4,27 @@
  *   these routes are mounted onto /users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
-
 const { Template } = require("ejs");
 const express = require("express");
 const router = express.Router();
+
+//mailgun
+const mailgun = require("mailgun-js");
+const api_key = process.env.MAILGUN_API_KEY;
+const DOMAIN = 'sandbox37b93d4a24df42e68f97f1f1461200de.mailgun.org';
+const mg = mailgun({apiKey: api_key, domain: DOMAIN});
+const data = {
+	from: 'Excited User <decisions.lhl@gmail.com>',
+	to: 'decisions.lhl@gmail.com',
+	subject: 'You have created a new poll!',
+	text: 'Here are your links:'
+};
+mg.messages().send(data, function (error, body) {
+  if (error) {
+    console.log(error);
+  }
+	console.log(body);
+});
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
