@@ -1,7 +1,13 @@
 <% include partials/_head_tag.ejs %>
 
 <body>
-  <%- include('partials/_navbar') %>
+  <nav>
+    <div id="navbar">
+      <h1>Decision Maker</h1>
+      <a href="/" class="create-poll-btn hidden"><span>Create a new poll</span></a>
+    </div>
+  </nav>
+
 
   <% if (voted) { %>
     <div class="vote_success_msg">
