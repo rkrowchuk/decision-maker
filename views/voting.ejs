@@ -8,6 +8,7 @@
   <h2><%= poll.question %></h2>
 
   <form action="/api/polls/:id" method="post" class="vote_submission">
+    <input type="hidden" name="poll_id" value="<%= poll.id %>">
 
     <section id="sortable">
       <div class="option" id="option_1">

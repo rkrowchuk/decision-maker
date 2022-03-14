@@ -7,6 +7,7 @@
 const { Template } = require("ejs");
 const express = require("express");
 const router = express.Router();
+const querystring = require('querystring');
 
 //mailgun
 const mailgun = require("mailgun-js");
@@ -27,10 +28,6 @@ mg.messages().send(data, function (error, body) {
 });
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    res.locals.title = "new route";
-    res.render("index");
-  });
 
   router.get("/vote/:id", (req, res) => {
     res.locals.title = "voting";
@@ -53,14 +50,34 @@ module.exports = (db) => {
     const poll_id = req.params.id;
 
     return db
-    .query(`SELECT polls.question, polls.answer_1, submissions.a1_score, polls.answer_2,submissions.a2_score, polls.answer_3, submissions.a3_score, polls.answer_4, submissions.a4_score
+    .query(`SELECT polls.question, polls.answer_1, SUM(submissions.a1_score) AS a1, polls.answer_2, SUM(submissions.a2_score) AS a2, polls.answer_3, SUM(submissions.a3_score) AS a3, polls.answer_4, SUM(submissions.a4_score) AS a4
     FROM polls
-    JOIN submissions ON polls.id = submissions.poll_id
-    WHERE polls.id = $1;`, [`${poll_id}`])
+    JOIN submissions ON polls.id = poll_id
+    WHERE polls.id = $1
+    GROUP BY polls.question, polls.answer_1, polls.answer_2, polls.answer_3, polls.answer_4;
+`, [`${poll_id}`])
     .then((data) => {
       const scores = data.rows[0];
       console.log(data.rows[0]);
-      const templateVars = { scores };
+
+      const results = [];
+      const ans1 = {};
+      ans1.option = scores.answer_1;
+      ans1.total = scores.a1;
+      const ans2 = {};
+      ans2.option = scores.answer_2;
+      ans2.total = scores.a2;
+      const ans3 = {};
+      ans3.option = scores.answer_3;
+      ans3.total = scores.a3;
+      const ans4 = {};
+      ans4.option = scores.answer_4;
+      ans4.total = scores.a4;
+      results.push(ans1, ans2, ans3, ans4);
+      results.sort((a, b) => {
+        return b.total - a.total;
+      });
+      const templateVars = { scores, results };
       return res.render("results", templateVars);
     })
     .catch((err) => {
@@ -102,7 +119,32 @@ module.exports = (db) => {
   });
 
   router.post("/:id", (req, res) => {
-    res.redirect("/");
+    const voteInput = req.body;
+    const queryParams = [
+      `${voteInput.poll_id}`,
+      `${voteInput.voter_name}`,
+      `${voteInput.option_1}`,
+      `${voteInput.option_2}`,
+      `${voteInput.option_3}`,
+      `${voteInput.option_4}`,
+    ];
+    const queryString = `INSERT INTO submissions (
+      poll_id, voter_name, a1_score, a2_score, a3_score, a4_score
+    ) VALUES (
+      $1, $2, $3, $4, $5, $6
+    );`
+
+    return db.query(queryString, queryParams)
+      .then(() => {
+        const query = querystring.stringify({
+          "voted": true,
+          "voter_name": voteInput.voter_name,
+        });
+        res.redirect('/?' + query);
+      })
+      .catch((err) => {
+        return console.log(err);
+      })
   });
 
   return router;

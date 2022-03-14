@@ -1,7 +1,25 @@
 <% include partials/_head_tag.ejs %>
 
 <body>
-  <%- include('partials/_navbar') %>
+  <nav>
+    <div id="navbar">
+      <h1>Decision Maker</h1>
+      <a href="/" class="create-poll-btn hidden"><span>Create a new poll</span></a>
+    </div>
+  </nav>
+
+
+  <% if (voted) { %>
+    <div class="vote_success_msg">
+      <% if (voter_name) {%>
+        <h2>Thanks for voting <%= voter_name %>!</h2>
+      <% } else { %>
+        <h2>Thanks for voting!</h2>
+      <% } %>
+    </div>
+  <% } %>
+
+
   <h1 class="page-title">Create your poll</h1>
   <section>
   <form action="/api/polls/" method="post" class="create-poll">
