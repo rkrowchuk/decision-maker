@@ -2,6 +2,7 @@
 
 <body>
   <%- include('partials/_navbar') %>
+  <main id="container">
   <header>
     <h1 class="page-title">Rank these options!</h1>
   </header>
@@ -55,7 +56,7 @@
         </span>
       </div>
     </section>
-
+    <div class ="form-footer">
       <div class="voter_name">
         <% if(poll.name_required) { %>
           <input type="text" class="voter-input" placeholder="Name (required)" name="voter_name" required>
@@ -65,9 +66,11 @@
       </div>
 
       <div class="poll-submit">
-        <button class="btn btn-primary vote_submit_button" type="submit">Submit Your Rankings!</button>
+        <button class="poll-submit btn btn-primary" type="submit">Submit Your Rankings!</button>
       </div>
+    </div>
     </form>
+  </main>
 
 </body>
 

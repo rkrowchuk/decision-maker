@@ -4,6 +4,7 @@
 $font-color: #edf5e1;
 $accent-color: #6cdaee;
 $match-bg: #4743e3;
+$box-bg: rgba(237, 245, 225, .95);
 
 
 body {
@@ -113,7 +114,7 @@ form.create-poll {
   height: 10em;
   display: flex;
   flex-direction: column;
-  background-color: rgba(237, 245, 225, .90);
+  background-color: $box-bg;
   color: #2575fc;
   border-radius: 20px;
   padding: 20px;
@@ -223,12 +224,15 @@ p#result-1 {
 }
 
 //voting.ejs
+
+
 input.voter-input {
   width: 100%;
+  border-bottom: 3px solid $accent-color;
 }
 
 .poll_question {
-  color: $font-color;
+  color: $accent-color;
   border-bottom: $font-color;
   font-size: 2.2rem;
 }
@@ -240,17 +244,21 @@ input.voter-input {
   justify-content: center;
 }
 
+.voter_name {
+  margin: 20px;
+  width: 80%;
+}
+
 div.option {
   width: 450px;
   margin: 1em;
-  padding-left: 1.3em;
-  padding-right: 1.5em;
+  padding: 10px 20px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(227, 255, 255);
+  background-color: $box-bg;
   color: $match-bg;
-  border-radius: 2%;
+  border-radius: 20px;
   gap: 3em;
   transition: box-shadow .3s;
 }
@@ -278,21 +286,6 @@ div .option-info {
   border-bottom: 1px solid $accent-color;
   color: $font-color;
   font-size: x-large;
-}
-
-button.vote_submit_button {
-  margin-top: 10px;
-  justify-content: center;
-  border: none;
-  background-color: rgb(227, 255, 255);
-  color: #4743e3;
-  font-family: 'Barriecito', bold;
-  font-size: xx-large;
-}
-
-button.vote_submit_button:hover{
-  background-color: #4743e3;
-  color: rgb(227, 255, 255);
 }
 
 .index_msg {

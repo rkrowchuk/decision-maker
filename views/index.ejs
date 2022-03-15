@@ -7,7 +7,7 @@
       <a href="/" class="create-poll-btn hidden"><span>Create a new poll</span></a>
     </div>
   </nav>
-
+  <main id="container">
 
   <% if (voted) { %>
     <div class="index_msg">
@@ -25,7 +25,7 @@
     </div>
   <% } %>
 
-<main id="container">
+
   <h1 class="page-title">Create your poll</h1>
   <section class="poll_form">
   <form action="/api/polls/" method="post" class="create-poll">

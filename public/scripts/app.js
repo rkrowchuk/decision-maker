@@ -36,31 +36,13 @@ $(document).ready(() => {
   });
 // navbar scroll disappear
 
-// $(window).on('scroll', function() {
-//   const currentScrollPos = $(window).pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     $("#nav").css("display", "none");
-//   } else {
-//     $("#nav").css("display", "inline");
-//   }
-//   prevScrollpos = currentScrollPos;
-// })
-
-// $(window).on('scroll', function() {
-//   $("#nav").css("display", "none");
-// });
-
 $(window).on('scroll', function() {
   const $height = $(window).scrollTop();
   if($height > 50) {
   $("#nav").slideUp();
-} else {
+  } else {
   $("#nav").slideDown();
 }
-})
-
-$(window).pageYOffset('scroll', function() {
-  $("#nav").slideUp();
 })
 
 });
