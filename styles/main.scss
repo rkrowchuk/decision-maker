@@ -3,6 +3,7 @@
 // }
 $font-color: #edf5e1;
 $accent-color: #54d987;
+$match-bg: #4743e3;
 
 
 body {
@@ -88,8 +89,74 @@ nav {
 
 // index.ejs
 
+.page-title {
+  font-size: 45px;
+}
+
+section.poll_form {
+  width: 95vw;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form.create-poll {
+  width: 100%;
+  justify-content: center;
+}
+
 .hidden {
   display: none;
+}
+
+.all_input_boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2em;
+}
+
+.input_box {
+  width: 95%;
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(227, 255, 255);
+  color: #2575fc;
+}
+
+.answer-field{
+
+
+  .answer-input{
+    font-size: x-large;
+    color: $match-bg;
+  }
+}
+
+.description-field {
+  flex-grow: 2;
+
+  .description-input {
+    background-color: rgb(227, 255, 255);
+    border: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    resize: none;
+    color: $match-bg;
+    font-size: large;
+  }
+}
+
+
+.form-footer {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 input#question {
@@ -104,29 +171,51 @@ input#question {
 input.answer-input {
   width: 100%;
   background: none;
-  color: $font-color;
   border-style: none;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 1px solid #4743e3;
  }
 
 input.description-input {
   width: 100%;
   background: none;
-  color: $font-color;
   border-style: none;
   border-bottom: 1px solid $accent-color;
+}
+
+.include-name-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: large;
+  color: $font-color;
+}
+
+input[type=checkbox] {
+  transform: scale(1.7);
 }
 
 #email-input {
   width: 100%;
   background: none;
-  color: $font-color;
   border-style: none;
   border-bottom: 1px solid $accent-color;
+  color: $font-color;
+  font-size: large;
 }
 
 button.poll-submit {
+  margin-top: 10px;
   justify-content: center;
+  border: none;
+  background-color: rgb(227, 255, 255);
+  color: #4743e3;
+  font-family: 'Barriecito', bold;
+  font-size: xx-large;
+}
+
+button.poll-submit:hover{
+  background-color: #4743e3;
+  color: rgb(227, 255, 255);
 }
 
 
