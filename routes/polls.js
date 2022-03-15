@@ -56,7 +56,7 @@ module.exports = (db) => {
         return res.redirect('/?' + query);
       }
 
-      console.log(data.rows[0]);
+      // console.log(data.rows[0]);
 
       const results = [];
       const ans1 = {};
@@ -75,7 +75,19 @@ module.exports = (db) => {
       results.sort((a, b) => {
         return b.total - a.total;
       });
-      const templateVars = { scores, results };
+
+      // Calculate percentages
+      let sum = 0;
+      for (const opt of results) {
+        sum += parseInt(opt.total);
+      };
+      const percentages = [];
+      for (const opt of results) {
+        percentages.push(parseFloat((opt.total / sum) * 100).toFixed(1));
+      };
+
+
+      const templateVars = { scores, results, percentages };
       return res.render("results", templateVars);
     })
     .catch((err) => {

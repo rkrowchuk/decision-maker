@@ -29,14 +29,16 @@ div.results {
     }
 
     .result-percent {
-      font-size: xx-large;
+      font-size: x-large;
       display: flex;
       justify-content: center;
-      width: 2.6em;
+      width: 3.2em;
       margin-right: 1em;
       flex-shrink: 0;
+      overflow: hidden;
+      white-space: nowrap;
       background-color: $match-bg;
-      padding: 0.4em;
+      padding: 0.7em;
       border-radius: 50%;
       color: $font-color;
     }
