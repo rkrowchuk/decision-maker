@@ -51,7 +51,8 @@ app.get("/", (req, res) => {
   res.locals.title = "Decision Maker";
   const templateVars = {
     voted: req.query.voted,
-    voter_name: req.query.voter_name
+    voter_name: req.query.voter_name,
+    msg: req.query.msg
   };
   res.render("index", templateVars);
 });

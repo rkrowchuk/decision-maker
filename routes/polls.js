@@ -47,6 +47,15 @@ module.exports = (db) => {
 `, [`${poll_url}`])
     .then((data) => {
       const scores = data.rows[0];
+
+      // Redirect if poll has no votes yet.
+      if(!scores) {
+        const query = querystring.stringify({
+          "msg": "No results for this poll yet!"
+        });
+        return res.redirect('/?' + query);
+      }
+
       console.log(data.rows[0]);
 
       const results = [];
@@ -70,7 +79,7 @@ module.exports = (db) => {
       return res.render("results", templateVars);
     })
     .catch((err) => {
-      return console.log(err);
+      return console.log('error here!!!!!::', err);
     });
 
   });

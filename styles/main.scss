@@ -54,8 +54,8 @@ form > * {
 // navbar
 
 nav {
-  width: 100%;
   position: fixed;
+  width: 100%;
   top: 0;
 }
 #navbar {
@@ -301,7 +301,7 @@ button.vote_submit_button:hover{
   color: rgb(227, 255, 255);
 }
 
-.vote_success_msg {
+.index_msg {
   color: $font-color;
   border: #54d987;
 }

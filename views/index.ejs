@@ -10,12 +10,18 @@
 
 
   <% if (voted) { %>
-    <div class="vote_success_msg">
+    <div class="index_msg">
       <% if (voter_name) {%>
         <h2>Thanks for voting <%= voter_name %>!</h2>
       <% } else { %>
         <h2>Thanks for voting!</h2>
       <% } %>
+    </div>
+  <% } %>
+
+  <% if (msg) { %>
+    <div class="index_msg">
+      <h2><%= msg %></h2>
     </div>
   <% } %>
 
