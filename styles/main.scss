@@ -2,7 +2,7 @@
 //   border: 1px solid black;
 // }
 $font-color: #edf5e1;
-$accent-color: #54d987;
+$accent-color: #6cdaee;
 $match-bg: #4743e3;
 
 
@@ -10,59 +10,48 @@ body {
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
   max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-
-  // background: rgb(163, 208, 219);
-  // background: linear-gradient(
-  //   227deg,
-  //   rgba(163, 208, 219, 1) 0%,
-  //   rgba(163, 176, 219, 1) 20%,
-  //   rgba(163, 173, 219, 1) 34%,
-  //   rgba(163, 219, 208, 1) 59%,
-  //   rgba(163, 208, 219, 1) 74%,
-  //   rgba(163, 208, 219, 1) 100%
-  // );
+  display: flex;
+  justify-content: center;
   background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
 }
 
 h1 {
+  text-align: center;
   font-family: 'Barriecito', cursive;
   color: $font-color;
 }
 
-div {
-  display: flex;
-  padding: 10px;
-}
-
-form {
+#container {
+  position: relative;
+  width: 100%;
+  top: 70px;
   display: flex;
   flex-direction: column;
-}
-
-form > * {
-  flex-basis: 100%;
+  align-items: center;
 }
 
 .page-title {
   font-family: 'Barriecito', cursive;
 }
+
 // navbar
 
-nav {
+#nav {
   position: fixed;
   width: 100%;
-  top: 0;
+  z-index: 100;
+  transition: top 0.3s;
 }
 #navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 50px;
+  opacity: 1;
+}
+#navbar h1 {
+  color: $accent-color;
 }
 
 .create-poll-btn {
@@ -105,7 +94,6 @@ section.poll_form {
 
 form.create-poll {
   width: 100%;
-  justify-content: center;
 }
 
 .hidden {
@@ -117,7 +105,7 @@ form.create-poll {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 2em;
+  row-gap: 1.2em;
 }
 
 .input_box {
@@ -125,8 +113,10 @@ form.create-poll {
   height: 10em;
   display: flex;
   flex-direction: column;
-  background-color: rgb(227, 255, 255);
+  background-color: rgba(237, 245, 225, .90);
   color: #2575fc;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .answer-field{
@@ -142,7 +132,7 @@ form.create-poll {
   flex-grow: 2;
 
   .description-input {
-    background-color: rgb(227, 255, 255);
+    background: none;
     border: none;
     width: 100%;
     height: 100%;
@@ -153,70 +143,74 @@ form.create-poll {
   }
 }
 
-
 .form-footer {
   width: 500px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 input#question {
   width: 100%;
   background: none;
   border-style: none;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 3px solid $accent-color;
   color: $font-color;
-  font-size: 24px;;
+  font-size: 24px;
+  margin-bottom: 30px;
 }
 
 input.answer-input {
   width: 100%;
   background: none;
   border-style: none;
-  border-bottom: 1px solid #4743e3;
+  border-bottom: 3px solid $accent-color;
+  margin-bottom: 5px;
  }
 
 input.description-input {
   width: 100%;
   background: none;
   border-style: none;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 3px solid $accent-color;
 }
 
 .include-name-box {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  margin: 20px;
   font-size: large;
   color: $font-color;
 }
 
-input[type=checkbox] {
+#include-name {
   transform: scale(1.7);
+  margin: 15px;
 }
 
 #email-input {
-  width: 100%;
+  width: 550px;
   background: none;
   border-style: none;
-  border-bottom: 1px solid $accent-color;
+  border-bottom: 3px solid $accent-color;
   color: $font-color;
   font-size: large;
+  margin-top: 20px;
 }
 
 button.poll-submit {
   margin-top: 10px;
-  justify-content: center;
   border: none;
-  background-color: rgb(227, 255, 255);
+  background-color: $accent-color;
   color: #4743e3;
-  font-family: 'Barriecito', bold;
-  font-size: xx-large;
+  font-weight: 700;
+  font-size: x-large;
+  border-radius: 100px;
+  padding: 5px 30px;
 }
 
 button.poll-submit:hover{
-  background-color: #4743e3;
-  color: rgb(227, 255, 255);
+  background-color: $font-color;
+  color: #4743e3;
 }
 
 
@@ -312,6 +306,10 @@ button.vote_submit_button:hover{
 }
 section.links {
   display: flex;
+}
+
+@media only screen and (min-width: 1024px) {
+
 }
 
 

@@ -1,6 +1,7 @@
 <% include partials/_head_tag.ejs %>
 <body>
   <%- include('partials/_navbar') %>
+  <main id="container">
   <h1 class="result-title">Your Results!</h1>
   <h2 class="poll_question"><%= scores.question %></h2>
 
@@ -28,5 +29,6 @@
     </div>
 
   </div>
+</main>
 </body>
 </html>
