@@ -1,31 +1,46 @@
 $font-color: #edf5e1;
-$accent-color: #54d987;
+$accent-color: #6cdaee;
 $match-bg: #4743e3;
+$box-bg: rgba(237, 245, 225, .95);
 
 .result-title {
   font-size: 60px;
 }
 
+h2 .poll_question {
+  text-align: center;
+}
 div.results {
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
+  margin-top: 20px;
 
   .result-block {
-    background-color: rgb(227, 255, 255);
+    background: none;
+    border-bottom: 3px solid $accent-color;
     height: 12vh;
     width: 80vw;
     max-width: 600px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2vh;
+    margin: 10px 0px;
     overflow-wrap: anywhere;
 
     .result-text {
       font-size: xx-large;
-      margin-left: 1.5em;
-      color: $match-bg;
+      margin-left: 40px;
+      color: $font-color;
+    }
+
+
+    #result-cont {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
     }
 
     .result-percent {
@@ -33,25 +48,44 @@ div.results {
       display: flex;
       justify-content: center;
       width: 2.6em;
+      height: 2.5em;
       margin-right: 1em;
       flex-shrink: 0;
-      background-color: $match-bg;
+      background-color: $font-color;
       padding: 0.4em;
-      border-radius: 50%;
-      color: $font-color;
+      border-radius: 100%;
+      color: $match-bg;
+      margin-right: 60px;
+      margin-bottom: 10px;
     }
   }
+
+  #result-1 {
+    display: flex;
+    flex-direction: column;
+    background-color: $accent-color;
+    height: 160px;
+    border-radius: 20px;
+  }
+  #result-1 .result-text {
+    color: $match-bg;
+    font-weight: 700;
+    font-size: 48px;
+  }
+
+#result-1 .result-percent {
+  background-color: $match-bg;
+  color: $font-color;
+  font-size: 48px;
+  margin-right: 40px;
+
+}
   .winner {
-    background-color: rgb(227, 255, 255);
-    height: 5vh;
     width: 80vw;
     max-width: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 36px;
     font-family: 'Barriecito', cursive;
-    font-size: 60px;
-    color: $match-bg;
-
+    color: $accent-color;
+    padding: 0;
   }
 }
