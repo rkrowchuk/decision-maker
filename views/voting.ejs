@@ -5,7 +5,7 @@
   <header>
     <h1 class="page-title">Rank these options!</h1>
   </header>
-  <h2><%= poll.question %></h2>
+  <h2 class="poll_question"><%= poll.question %></h2>
 
   <form action="/api/polls/:id" method="post" class="vote_submission">
     <input type="hidden" name="poll_id" value="<%= poll.id %>">
@@ -65,7 +65,7 @@
       </div>
 
       <div class="poll-submit">
-        <input type="submit" value="Submit your Rankings!">
+        <button class="btn btn-primary vote_submit_button" type="submit">Submit Your Rankings!</button>
       </div>
     </form>
 

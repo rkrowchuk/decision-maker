@@ -73,7 +73,8 @@ nav {
   padding:10px;
   height: 50px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 30px;
+  font-family: 'Barriecito', cursive;
   cursor: pointer;
 }
 
@@ -235,9 +236,17 @@ input.voter-input {
   width: 100%;
 }
 
+.poll_question {
+  color: $font-color;
+  border-bottom: $font-color;
+  font-size: 2.2rem;
+}
+
 .vote_submission {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 div.option {
@@ -249,6 +258,7 @@ div.option {
   align-items: center;
   justify-content: space-between;
   background-color: rgb(227, 255, 255);
+  color: $match-bg;
   border-radius: 2%;
   gap: 3em;
   transition: box-shadow .3s;
@@ -268,6 +278,30 @@ div .option-info {
   flex-grow: 2;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.voter-input {
+  width: 100%;
+  background: none;
+  border-style: none;
+  border-bottom: 1px solid $accent-color;
+  color: $font-color;
+  font-size: x-large;
+}
+
+button.vote_submit_button {
+  margin-top: 10px;
+  justify-content: center;
+  border: none;
+  background-color: rgb(227, 255, 255);
+  color: #4743e3;
+  font-family: 'Barriecito', bold;
+  font-size: xx-large;
+}
+
+button.vote_submit_button:hover{
+  background-color: #4743e3;
+  color: rgb(227, 255, 255);
 }
 
 .vote_success_msg {
