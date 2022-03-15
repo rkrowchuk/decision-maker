@@ -15,18 +15,6 @@ const mailgun = require("mailgun-js");
 const api_key = process.env.MAILGUN_API_KEY;
 const DOMAIN = 'sandbox37b93d4a24df42e68f97f1f1461200de.mailgun.org';
 const mg = mailgun({apiKey: api_key, domain: DOMAIN});
-const data = {
-	from: 'Excited User <decisions.lhl@gmail.com>',
-	to: 'decisions.lhl@gmail.com',
-	subject: 'You have created a new poll!',
-	text: 'Here are your links:'
-};
-mg.messages().send(data, function (error, body) {
-  if (error) {
-    console.log(error);
-  }
-	console.log(body);
-});
 
 module.exports = (db) => {
 
@@ -110,12 +98,26 @@ module.exports = (db) => {
       `${resultUrl}`,
       `${submissionUrl}`
     ];
+
+    const data = {
+      from: 'Excited User <decisions.lhl@gmail.com>',
+      to: 'decisions.lhl@gmail.com',
+      subject: 'You have created a new poll!',
+      html: `<a href="http://localhost:8080/api/polls/vote/${submissionUrl}">Share with your friends</a> <a href="http://localhost:8080/api/polls/results/${resultUrl}">View your results</a>`
+    };
+
     return db
       .query(
         `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email, result_url, submission_url) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
         queryParams
       )
       .then((result) => {
+        mg.messages().send(data, function (error, body) {
+          if (error) {
+            console.log(error);
+          }
+          console.log(body);
+        })
         return res.redirect("/api/polls/success");
       })
       .catch((err) => {
