@@ -8,6 +8,7 @@ const { Template } = require("ejs");
 const express = require("express");
 const router = express.Router();
 const querystring = require('querystring');
+const { generateRandomString } = require("../helpers/helpers.js");
 
 //mailgun
 const mailgun = require("mailgun-js");
@@ -47,15 +48,15 @@ module.exports = (db) => {
 
   router.get("/results/:id", (req, res) => {
     res.locals.title = "results";
-    const poll_id = req.params.id;
+    const poll_url = req.params.id;
 
     return db
     .query(`SELECT polls.question, polls.answer_1, SUM(submissions.a1_score) AS a1, polls.answer_2, SUM(submissions.a2_score) AS a2, polls.answer_3, SUM(submissions.a3_score) AS a3, polls.answer_4, SUM(submissions.a4_score) AS a4
     FROM polls
     JOIN submissions ON polls.id = poll_id
-    WHERE polls.id = $1
+    WHERE polls.result_url = $1
     GROUP BY polls.question, polls.answer_1, polls.answer_2, polls.answer_3, polls.answer_4;
-`, [`${poll_id}`])
+`, [`${poll_url}`])
     .then((data) => {
       const scores = data.rows[0];
       console.log(data.rows[0]);
@@ -93,6 +94,8 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     const pollInput = req.body;
+    const resultUrl = generateRandomString();
+    const submissionUrl = generateRandomString();
     const queryParams = [
       `${pollInput.question}`,
       `${pollInput.answer1}`,
@@ -104,10 +107,12 @@ module.exports = (db) => {
       `${pollInput.answer4}`,
       `${pollInput.description_4}`,
       `${pollInput.email}`,
+      `${resultUrl}`,
+      `${submissionUrl}`
     ];
     return db
       .query(
-        `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+        `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email, result_url, submission_url) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
         queryParams
       )
       .then((result) => {

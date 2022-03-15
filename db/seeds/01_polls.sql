@@ -9,7 +9,9 @@ INSERT INTO polls (
   description_3,
   answer_4,
   description_4,
-  name_required
+  name_required,
+  result_url,
+  submission_url
 ) VALUES (
   'fakeemail@gmail.com',
   'What is your favourite colour?',
@@ -21,7 +23,9 @@ INSERT INTO polls (
   'fjdshfkuasdhfuiasfhas',
   'pink',
   'kdjfhldsufhdshjakjfhasldkjf',
-  'true'
+  'true',
+  'f3rkaklkk3',
+  'votesaklkk3'
 ), (
   'anotherfakeemail@gmail.com',
   'What is your favourite meal?',
@@ -33,5 +37,7 @@ INSERT INTO polls (
   'Spicy',
   'Poutine',
   'canadian',
-  'false'
+  'false',
+  'kassladksjd3',
+  'votesaklkk3'
 );

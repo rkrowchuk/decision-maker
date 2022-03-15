@@ -12,5 +12,7 @@ CREATE TABLE polls (
   description_3 TEXT,
   answer_4 VARCHAR(255) NOT NULL,
   description_4 TEXT,
-  name_required BOOLEAN
+  name_required BOOLEAN,
+  result_url VARCHAR(255) NOT NULL,
+  submission_url VARCHAR(255) NOT NULL
 );
