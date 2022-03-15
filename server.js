@@ -1,5 +1,5 @@
 // load .env data into process.env
-require("dotenv").config();
+// require("dotenv").config();
 
 // Web server config
 const PORT = process.env.PORT || 8080;
@@ -11,12 +11,7 @@ const morgan = require("morgan");
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
-const db = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+const db = new Pool(dbParams);
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
