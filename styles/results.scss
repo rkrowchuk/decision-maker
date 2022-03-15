@@ -11,8 +11,7 @@ h2 .poll_question {
   text-align: center;
 }
 div.results {
-  flex-direction: column;
-  justify-content: space-between;
+
   margin-top: 20px;
 
   .result-block {
@@ -33,7 +32,6 @@ div.results {
       color: $font-color;
     }
 
-
     #result-cont {
       display: flex;
       flex-direction: row;
@@ -44,19 +42,13 @@ div.results {
     }
 
     .result-percent {
-      font-size: x-large;
+      font-size: xx-large;
+      font-weight: 700;
       display: flex;
       justify-content: center;
-      width: 2.6em;
-      height: 2.5em;
-      margin-right: 1em;
       flex-shrink: 0;
-      background-color: $font-color;
-      padding: 0.4em;
-      border-radius: 100%;
-      color: $match-bg;
+      color: $font-color;
       margin-right: 60px;
-      margin-bottom: 10px;
     }
   }
 
@@ -65,6 +57,7 @@ div.results {
     flex-direction: column;
     background-color: $accent-color;
     height: 160px;
+    padding-top: 20px;
     border-radius: 20px;
   }
   #result-1 .result-text {
@@ -74,8 +67,7 @@ div.results {
   }
 
 #result-1 .result-percent {
-  background-color: $match-bg;
-  color: $font-color;
+  color: $match-bg;
   font-size: 48px;
   margin-right: 40px;
 
@@ -86,6 +78,5 @@ div.results {
     font-size: 36px;
     font-family: 'Barriecito', cursive;
     color: $accent-color;
-    padding: 0;
   }
 }
