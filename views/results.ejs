@@ -1,21 +1,32 @@
 <% include partials/_head_tag.ejs %>
 <body>
   <%- include('partials/_navbar') %>
-  <h2 class="page-title">The results:</h2>
-  <p class="poll-question"><%= scores.question %></p>
+  <h1 class="result-title">Your Results!</h1>
+  <h2 class="poll_question"><%= scores.question %></h2>
+
   <div class="results">
-    <div id ="result-1">
-      <p><%= results[0].option %></p>
+
+    <span class="winner">Decided!</span>
+    <div class="result-block" id ="result-1">
+      <span class="result-text"><%= results[0].option %></span>
+      <span class="result-percent">1st</span>
     </div>
-    <div id="result-2">
-      <p><%= results[1].option %></p>
+
+    <div class="result-block" id="result-2">
+      <span class="result-text"><%= results[1].option %></span>
+      <span class="result-percent">2nd</span>
     </div>
-    <div id="result-3">
-      <p><%= results[2].option %></p>
+
+    <div class="result-block" id="result-3">
+      <span class="result-text"><%= results[2].option %></span>
+      <span class="result-percent">3rd</span>
     </div>
-    <div id="result-4">
-      <p><%= results[3].option %></p>
+
+    <div class="result-block" id="result-4">
+      <span class="result-text"><%= results[3].option %></span>
+      <span class="result-percent">4th</span>
     </div>
+
   </div>
 </body>
 </html>
