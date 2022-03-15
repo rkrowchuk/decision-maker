@@ -32,10 +32,10 @@ module.exports = (db) => {
 
   router.get("/vote/:id", (req, res) => {
     res.locals.title = "voting";
-    const poll_id = req.params.id;
+    const vote_url = req.params.id;
 
     return db
-      .query("SELECT * FROM polls WHERE id = $1;", [`${poll_id}`])
+      .query("SELECT * FROM polls WHERE submission_url = $1;", [`${vote_url}`])
       .then((data) => {
         const poll = data.rows[0];
         const templateVars = { poll };
