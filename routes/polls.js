@@ -172,7 +172,7 @@ module.exports = (db) => {
     const data = {
       from: 'Excited User <decisions.lhl@gmail.com>',
       to: 'decisions.lhl@gmail.com',
-      subject: 'Someone has voted! :D',
+      subject: 'Someone has voted!🎉',
       html: `<a href#>${voteInput.voter_name} has voted! View your results:</a>`
     };
 
