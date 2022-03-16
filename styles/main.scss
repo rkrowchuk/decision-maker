@@ -326,6 +326,22 @@ a {
   text-decoration: none;
 }
 
+h2.success {
+  color: #6cdaee;
+  border-bottom: #edf5e1;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.success-send {
+  font-size: 1.2rem;
+}
+
+.success-links{
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 @media only screen and (min-width: 1024px) {
 
 }
