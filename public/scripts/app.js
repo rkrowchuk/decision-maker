@@ -36,13 +36,25 @@ $(document).ready(() => {
   });
 // navbar scroll disappear
 
-$(window).on('scroll', function() {
-  const $height = $(window).scrollTop();
-  if($height > 50) {
-  $("#nav").slideUp();
-  } else {
-  $("#nav").slideDown();
-}
-})
+  $(window).on('scroll', function() {
+    const $height = $(window).scrollTop();
+    if($height > 50) {
+      $("#nav").slideUp();
+    } else {
+      $("#nav").slideDown();
+    }
+  })
 
+  // console.log(window.location.origin);
+
+  $('.copy-link').on('click', () => {
+    const url = `${window.location.origin}/api/polls/vote/${$('.copy-link').val()}`;
+    navigator.clipboard.writeText(url);
+    $('.copy-link').text('Copied to clipboard!');
+
+    setTimeout(function(){$('.copy-link').text('Copy and share!');}, 3000);
+  });
+  // const copyToClipboard = function (element, string) {
+
+  // }
 });
