@@ -98,7 +98,10 @@ module.exports = (db) => {
 
   router.get("/success", (req, res) => {
     res.locals.title = "success";
-    res.render("success");
+    console.log("req.query", req.query);
+    // const templateVars = {submissionUrl: req.query.submissionUrl, resultUrl: req.query.resultUrl};
+    res.render("success", req.query);
+
   });
 
   router.post("/", (req, res) => {
@@ -139,7 +142,11 @@ module.exports = (db) => {
           }
           console.log(body);
         })
-        return res.redirect("/api/polls/success");
+        const query = querystring.stringify({
+          submissionUrl,
+          resultUrl
+        });
+        return res.redirect("/api/polls/success?" + query);
       })
       .catch((err) => {
          return console.log("error:", err);
