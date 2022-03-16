@@ -127,7 +127,10 @@ module.exports = (db) => {
       from: 'Excited User <decisions.lhl@gmail.com>',
       to: 'decisions.lhl@gmail.com',
       subject: 'You have created a new poll!',
-      html: `<a href="http://localhost:8080/api/polls/vote/${submissionUrl}">Share with your friends</a> <a href="http://localhost:8080/api/polls/results/${resultUrl}">View your results</a>`
+      html: `
+      <div style="background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); padding: 25px">
+      <h1 style="color:#edf5e1; text-align: center"><a href="http://localhost:8080/api/polls/vote/${submissionUrl}" style="color:#6cdaee">Share with your friends</a></h1> <h1 style="color:#edf5e1; text-align: center"><a href="http://localhost:8080/api/polls/results/${resultUrl}" style="color:#6cdaee">View your results</a></h1>
+      </div>`
     };
 
     return db
@@ -163,19 +166,31 @@ module.exports = (db) => {
       `${voteInput.option_3}`,
       `${voteInput.option_4}`,
     ];
+
+    let emailName;
+      if (!voteInput.voter_name) {
+        emailName = "An anonymous voter";
+      } else {
+        emailName = voteInput.voter_name;
+      }
+
     const queryString = `INSERT INTO submissions (
       poll_id, voter_name, a1_score, a2_score, a3_score, a4_score
     ) VALUES (
       $1, $2, $3, $4, $5, $6
     );`
+
     return db.query(`SELECT question, result_url FROM polls WHERE id = ${voteInput.poll_id}`)
     .then((result) => {
       const data = {
         from: 'Excited User <decisions.lhl@gmail.com>',
         to: 'decisions.lhl@gmail.com',
         subject: 'Someone has voted!🎉',
-        html: `<p>${voteInput.voter_name} has voted on your poll: ${result.rows[0].question} </p>
-        <a href="http://localhost:8080/api/polls/results/${result.rows[0]['result_url']}">View your results: </a>`
+        html: `
+        <div style="background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); padding: 25px">
+        <h1 style="color:#edf5e1; text-align: center">${emailName} has voted on your poll: ${result.rows[0].question} </h1>
+        <h1 style="text-align: center"><a href="http://localhost:8080/api/polls/results/${result.rows[0]['result_url']}" style="color:#6cdaee">View your results</a></h1>
+        </div>`
       };
       return db.query(queryString, queryParams)
       .then(() => {
