@@ -169,6 +169,13 @@ module.exports = (db) => {
       $1, $2, $3, $4, $5, $6
     );`
 
+    const data = {
+      from: 'Excited User <decisions.lhl@gmail.com>',
+      to: 'decisions.lhl@gmail.com',
+      subject: 'Someone has voted! :D',
+      html: `<a href#>View your results</a>`
+    };
+
     return db.query(queryString, queryParams)
       .then(() => {
         const query = querystring.stringify({
@@ -176,6 +183,14 @@ module.exports = (db) => {
           "voter_name": voteInput.voter_name,
         });
         res.redirect('/?' + query);
+      })
+      .then(() => {
+        mg.messages().send(data, function (error, body) {
+          if (error) {
+            console.log(error);
+          }
+          console.log(body);
+        })
       })
       .catch((err) => {
         return console.log(err);
