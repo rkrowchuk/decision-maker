@@ -173,7 +173,7 @@ module.exports = (db) => {
       from: 'Excited User <decisions.lhl@gmail.com>',
       to: 'decisions.lhl@gmail.com',
       subject: 'Someone has voted! :D',
-      html: `<a href#>View your results</a>`
+      html: `<a href#>${voteInput.voter_name} has voted! View your results:</a>`
     };
 
     return db.query(queryString, queryParams)
