@@ -22,6 +22,9 @@ h1 {
   font-family: 'Barriecito', cursive;
   color: $font-color;
 }
+h2 {
+  color: $font-color;
+}
 
 #container {
   position: relative;
@@ -310,9 +313,17 @@ input.voter-input {
 //success.ejs
 .success-msg {
   flex-direction: column;
+  margin-top: 100px;
 }
-section.links {
-  display: flex;
+
+.success-msg p {
+  color: $font-color;
+  text-align: center;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 1024px) {
