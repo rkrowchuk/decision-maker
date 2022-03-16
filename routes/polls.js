@@ -123,6 +123,8 @@ module.exports = (db) => {
       `${submissionUrl}`,
     ];
 
+    queryParams.push(pollInput.include_name ? 'true' : 'false');
+
     const data = {
       from: 'Excited User <decisions.lhl@gmail.com>',
       to: 'decisions.lhl@gmail.com',
@@ -135,7 +137,7 @@ module.exports = (db) => {
 
     return db
       .query(
-        `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email, result_url, submission_url) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
+        `INSERT INTO polls (question, answer_1, description_1, answer_2, description_2, answer_3, description_3, answer_4, description_4, creator_email, result_url, submission_url, name_required) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
         queryParams
       )
       .then((result) => {
