@@ -169,11 +169,23 @@ module.exports = (db) => {
       $1, $2, $3, $4, $5, $6
     );`
 
+    let pollName;
+    let resulturl;
+    let submissionurl;
+
+     db.query(`SELECT question, result_url, submission_url FROM polls WHERE id = ${voteInput.poll_id};`)
+      .then((data) => {
+        console.log("data.rows[0].question:", data.rows[0].question);
+        return pollName = data.rows[0].question;
+        //  resulturl = data.rows[0].result_url;
+        //  submissionurl = data.rows[0].submission_url;
+      });
+
     const data = {
       from: 'Excited User <decisions.lhl@gmail.com>',
       to: 'decisions.lhl@gmail.com',
       subject: 'Someone has voted!🎉',
-      html: `<a href#>${voteInput.voter_name} has voted! View your results:</a>`
+      html: `<a href#>${voteInput.voter_name} has voted ${pollName} ! View your results:</a>`
     };
 
     return db.query(queryString, queryParams)
