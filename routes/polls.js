@@ -170,7 +170,6 @@ module.exports = (db) => {
     );`
     return db.query(`SELECT question, result_url FROM polls WHERE id = ${voteInput.poll_id}`)
     .then((result) => {
-      console.log(result.rows);
       const data = {
         from: 'Excited User <decisions.lhl@gmail.com>',
         to: 'decisions.lhl@gmail.com',
@@ -179,12 +178,12 @@ module.exports = (db) => {
         <a href="http://localhost:8080/api/polls/results/${result.rows[0]['result_url']}">View your results: </a>`
       };
       return db.query(queryString, queryParams)
-      .then((result) => {
+      .then(() => {
         const query = querystring.stringify({
           "voted": true,
           "voter_name": voteInput.voter_name,
         });
-       return res.redirect('/?' + query), result;
+       return res.redirect('/?' + query);
       })
       .then(() => {
         mg.messages().send(data, function (error, body) {
@@ -197,9 +196,6 @@ module.exports = (db) => {
       .catch((err) => {
         return console.log(err);
       })
-    })
-    .catch((err) => {
-      return console.log(err);
     })
   });
 
