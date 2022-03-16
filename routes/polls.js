@@ -168,21 +168,23 @@ module.exports = (db) => {
     ) VALUES (
       $1, $2, $3, $4, $5, $6
     );`
-
-    const data = {
-      from: 'Excited User <decisions.lhl@gmail.com>',
-      to: 'decisions.lhl@gmail.com',
-      subject: 'Someone has voted!🎉',
-      html: `<a href#>${voteInput.voter_name} has voted! View your results:</a>`
-    };
-
-    return db.query(queryString, queryParams)
-      .then(() => {
+    return db.query(`SELECT question, result_url FROM polls WHERE id = ${voteInput.poll_id}`)
+    .then((result) => {
+      console.log(result.rows);
+      const data = {
+        from: 'Excited User <decisions.lhl@gmail.com>',
+        to: 'decisions.lhl@gmail.com',
+        subject: 'Someone has voted!🎉',
+        html: `<p>${voteInput.voter_name} has voted on your poll: ${result.rows[0].question} </p>
+        <a href="http://localhost:8080/api/polls/results/${result.rows[0]['result_url']}">View your results: </a>`
+      };
+      return db.query(queryString, queryParams)
+      .then((result) => {
         const query = querystring.stringify({
           "voted": true,
           "voter_name": voteInput.voter_name,
         });
-        res.redirect('/?' + query);
+       return res.redirect('/?' + query), result;
       })
       .then(() => {
         mg.messages().send(data, function (error, body) {
@@ -195,6 +197,10 @@ module.exports = (db) => {
       .catch((err) => {
         return console.log(err);
       })
+    })
+    .catch((err) => {
+      return console.log(err);
+    })
   });
 
   return router;
