@@ -120,7 +120,7 @@ module.exports = (db) => {
       `${pollInput.description_4}`,
       `${pollInput.email}`,
       `${resultUrl}`,
-      `${submissionUrl}`
+      `${submissionUrl}`,
     ];
 
     const data = {
