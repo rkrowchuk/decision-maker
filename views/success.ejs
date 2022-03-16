@@ -7,9 +7,11 @@
   <p class="success-send">Send to your friends to gather your results!</p>
 </header>
 <section class="success-links">
-  <a id="results-link" href="/api/polls/results/<%=resultUrl%>">View your results</a>
+  <a class="link" id="results-link" href="/api/polls/results/<%=resultUrl%>">View your results</a>
   <br>
-  <a id="vote-link" href="/api/polls/vote/<%=submissionUrl%>">Share with your friends</a>
+  <a class="link" id="vote-link" href="/api/polls/vote/<%=submissionUrl%>">Vote here!</a>
+  <br>
+  <button value="<%=submissionUrl%>" class="copy-link">Copy and share!</button>
 </section>
 </main>
 </body>

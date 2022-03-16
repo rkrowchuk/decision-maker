@@ -218,6 +218,9 @@ button.poll-submit:hover{
   color: #4743e3;
 }
 
+button.poll-submit:active {
+  box-shadow: inset 0px 0px 5px #979797;
+}
 
 //results.ejs
 
@@ -340,6 +343,30 @@ h2.success {
 .success-links{
   text-align: center;
   font-size: 1.2rem;
+}
+
+.link:hover {
+  color: $font-color;
+}
+
+button.copy-link {
+  margin-top: 10px;
+  border: none;
+  background-color: $accent-color;
+  color: #4743e3;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 5px 30px;
+}
+
+button.copy-link:hover{
+  background-color: $font-color;
+  color: #4743e3;
+  cursor: copy;
+}
+
+button.copy-link:active {
+  box-shadow: inset 0px 0px 5px #979797;
 }
 
 @media only screen and (min-width: 1024px) {
