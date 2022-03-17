@@ -52,4 +52,13 @@ $(document).ready(() => {
 
     setTimeout(function(){$('.copy-link').text('Copy and share!');}, 3000);
   });
+
+  $('.poll-submit').on('click', () => {
+    console.log('HI');
+    $('.poll-submit').toggleClass('animate__animated').toggleClass('animate__jello');
+    setTimeout(() => {
+      $('.poll-submit').toggleClass('animate__animated').toggleClass('animate__jello')
+    }, 1000)
+
+  });
 });

@@ -122,6 +122,7 @@ form.create-poll {
   color: #2575fc;
   border-radius: 20px;
   padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.185), 2px 2px 5px rgba(0, 0, 0, 0.185);
 }
 
 .answer-field{
@@ -211,6 +212,8 @@ button.poll-submit {
   font-size: x-large;
   border-radius: 100px;
   padding: 5px 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.171), 2px 2px 5px rgba(0, 0, 0, 0.185);
+
 }
 
 button.poll-submit:hover{
@@ -270,6 +273,7 @@ input.voter-input {
   background-color: $box-bg;
   color: $match-bg;
   border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.171), 2px 2px 5px rgba(0, 0, 0, 0.185);
   gap: 3em;
   transition: box-shadow .3s;
 }
@@ -361,6 +365,7 @@ button.copy-link {
   font-weight: 700;
   border-radius: 100px;
   padding: 5px 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.185), 2px 2px 5px rgba(0, 0, 0, 0.185);
 }
 
 button.copy-link:hover{
