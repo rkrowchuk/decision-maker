@@ -241,8 +241,10 @@ input.voter-input {
 .poll_question {
   color: $accent-color;
   border-bottom: $font-color;
+  width: 80vw;
   font-size: 2.2rem;
   text-align: center;
+  word-break: break-word;
 }
 
 .vote_submission {
@@ -274,6 +276,7 @@ input.voter-input {
 
 .option-info {
   display: flex;
+  word-break: break-word;
 }
 
 .order {

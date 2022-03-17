@@ -125,13 +125,15 @@ module.exports = (db) => {
 
     queryParams.push(pollInput.include_name ? 'true' : 'false');
 
+    const base_url = process.env.BASE_URL || 'http://localhost:8080/';
+
     const data = {
       from: 'Excited User <decisions.lhl@gmail.com>',
       to: 'decisions.lhl@gmail.com',
       subject: 'You have created a new poll!',
       html: `
       <div style="background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); padding: 25px">
-      <h1 style="color:#edf5e1; text-align: center"><a href="http://localhost:8080/api/polls/vote/${submissionUrl}" style="color:#6cdaee">Share with your friends</a></h1> <h1 style="color:#edf5e1; text-align: center"><a href="http://localhost:8080/api/polls/results/${resultUrl}" style="color:#6cdaee">View your results</a></h1>
+      <h1 style="color:#edf5e1; text-align: center"><a href="${base_url}api/polls/vote/${submissionUrl}" style="color:#6cdaee">Share with your friends</a></h1> <h1 style="color:#edf5e1; text-align: center"><a href="${base_url}api/polls/results/${resultUrl}" style="color:#6cdaee">View your results</a></h1>
       </div>`
     };
 
@@ -184,6 +186,7 @@ module.exports = (db) => {
 
     return db.query(`SELECT question, result_url FROM polls WHERE id = ${voteInput.poll_id}`)
     .then((result) => {
+      const base_url = process.env.BASE_URL || 'http://localhost:8080/';
       const data = {
         from: 'Excited User <decisions.lhl@gmail.com>',
         to: 'decisions.lhl@gmail.com',
@@ -191,7 +194,7 @@ module.exports = (db) => {
         html: `
         <div style="background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); padding: 25px">
         <h1 style="color:#edf5e1; text-align: center">${emailName} has voted on your poll: ${result.rows[0].question} </h1>
-        <h1 style="text-align: center"><a href="http://localhost:8080/api/polls/results/${result.rows[0]['result_url']}" style="color:#6cdaee">View your results</a></h1>
+        <h1 style="text-align: center"><a href="${base_url}api/polls/results/${result.rows[0]['result_url']}" style="color:#6cdaee">View your results</a></h1>
         </div>`
       };
       return db.query(queryString, queryParams)
