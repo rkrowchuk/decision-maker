@@ -59,9 +59,9 @@
     <div class ="form-footer">
       <div class="voter_name">
         <% if(poll.name_required) { %>
-          <input type="text" class="voter-input" placeholder="Name (required)" name="voter_name" required>
+          <input type="text" class="voter-input" placeholder="Name (required)" name="voter_name" autocomplete="off" required>
         <% } else { %>
-          <input type="text" class="voter-input" placeholder="Name (optional)" name="voter_name">
+          <input type="text" class="voter-input" placeholder="Name (optional)" autocomplete="off" name="voter_name">
         <% } %>
       </div>
 
