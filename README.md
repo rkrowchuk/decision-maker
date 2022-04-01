@@ -28,4 +28,4 @@ The Decision Maker is an app that allows users to create a question and collect 
 !["Poll results page"](https://github.com/rkrowchuk/decision-maker/blob/master/docs/03-deicionMaker.jpg?raw=true)
 
 ## Team
-Built in collaboration by ["Kelsi Olstad"](https://github.com/kel-si), ["Ryan Williams"](https://github.com/Ryan-Williams-Dev) and ["Rhiannon Krowchuk"](https://github.com/rkrowchuk)
+Built in collaboration by [Kelsi Olstad](https://github.com/kel-si), [Ryan Williams](https://github.com/Ryan-Williams-Dev) and [Rhiannon Krowchuk](https://github.com/rkrowchuk)
