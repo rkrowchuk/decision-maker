@@ -7,8 +7,9 @@ The Decision Maker is an app that allows users to create a question and collect 
 ## Getting Started
 
 1. Install dependencies: `npm i`
-2. Run the server: `npm run local`
-3. Visit `http://localhost:8080/`
+2. To receive emails, open routes/polls.js and replace all instances of "decisions.lhl@gmail.com" with your own email.  
+3. Run the server: `npm run local`
+4. Visit `http://localhost:8080/`
 
 
 ## Dependencies
